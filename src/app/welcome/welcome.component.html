@@ -1,0 +1,22 @@
+<h2 fxLayoutAlign="center" >Messages</h2>
+<div fxLayoutAlign="center" class="chat-container" *ngIf="chat$ | async as Chat">
+  <mat-nav-list>
+    <mat-list-item class="chat-list" mat-list-item href="..." *ngFor="let message of Chat">
+      <h4>{{message.sender}}</h4>
+      ( <h5>{{message.timeStamp | date: 'shortTime'}}</h5> ) :
+      <h5>{{ message.message }}</h5>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
+<div fxLayoutAlign="center">
+  <section class="user-panel">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #newMessageForm="ngForm" (ngSubmit)="addNewMessage(newMessageForm)">
+      <mat-form-field>
+        <input type="text" matInput placeholder="say something" ngModel name="newMessage" newMessage required #newMessageInput="ngModel">
+        <mat-error *ngIf="newMessageInput.hasError('required')">message must not be empty.</mat-error>
+        <mat-error *ngIf="!newMessageInput.hasError('required')">message text is invalid.</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" [disabled]="newMessageForm.invalid">send</button>
+    </form>
+  </section>
+</div>

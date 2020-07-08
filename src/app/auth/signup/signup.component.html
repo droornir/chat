@@ -1,0 +1,11 @@
+<section class="signup-form">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Choose A Name" ngModel name="userName" userName required #nameInput="ngModel">
+      <mat-error *ngIf="nameInput.hasError('required')">Field must not be empty.</mat-error>
+      <mat-error *ngIf="!nameInput.hasError('required')">Name is invalid.</mat-error>
+    </mat-form-field>
+    <mat-checkbox ngModel name="agree" required color="primary">Agree to Terms and Conditions.</mat-checkbox>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Enter chatroom</button>
+  </form>
+</section>

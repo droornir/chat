@@ -1,0 +1,7 @@
+.chat-container{
+  height: 300px;
+  overflow: auto;
+}
+.chat-list{
+  background-color: darkgray;
+}
